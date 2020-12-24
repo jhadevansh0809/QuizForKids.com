@@ -1,0 +1,32 @@
+{% extends 'quiz/base.html' %}
+
+{% block title %}
+Result
+{% endblock title %}
+
+{% block body %}
+
+
+<div class="container my-3">
+
+    <div class="container border border-dark my-3 py-2">
+        <div class="container my-3">
+
+          <h1><strong>You scored {{ count }}/{{ length }}</strong></h1>
+          <br>
+          <h3>The correct answers are:</h3>
+          {% for i in res %}
+          <div class="container border border-danger my-3 py-2">
+            <div class="container my-3">
+          <h5>{{ i.question }}</h5>
+          <small><strong>Ans.</strong> {{ i.answer }}</small>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock body %}

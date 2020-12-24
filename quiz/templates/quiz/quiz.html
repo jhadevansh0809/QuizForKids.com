@@ -1,0 +1,39 @@
+{% extends 'quiz/base.html' %}
+
+{% block title %}
+Quiz
+{% endblock title %}
+
+{% block body %}
+
+
+<div class="container my-3">
+    <form action="{% url 'attempt_quiz'%}" method="POST">
+        {% csrf_token %}
+
+        {% for i in form %}
+        <div class="container border border-danger my-3 py-2">
+            <div class="container my-3">
+                <h3>{{ i.question }}</h3>
+                <div class="radio my-3">
+                    <label><input type="radio" value="option1" name={{ i.id }}> {{ i.option1 }}</label>
+                </div>
+                <div class="radio my-3">
+                    <label><input type="radio" value="option2" name={{ i.id }}> {{ i.option2 }}</label>
+                </div>
+                <div class="radio my-3">
+                    <label><input type="radio" value="option3" name={{ i.id }}> {{ i.option3 }}</label>
+                </div>
+                <div class="radio my-3">
+                    <label><input type="radio" value="option4" name={{ i.id }}> {{ i.option4 }}</label>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <a href="#"><button type="button submit" class="btn btn-success">Submit</button></a>
+    </form>
+
+</div>
+
+
+{% endblock body %}
